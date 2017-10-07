@@ -1,0 +1,253 @@
+<div class="uk-grid uk-grid-small">
+    <!-- 图片轮播 -->
+    <div class="uk-width-large-2-3">
+        <div class="uk-panel uk-panel-box border-radius-none background-white">
+            <div class="uk-slidenav-position" data-uk-slideshow="{animation: 'swipe', autoplay: true}">
+                <ul class="uk-slideshow">
+                    <li v-for="item in items">
+                        <a href="javascript:;">
+                            <figure class="uk-overlay uk-overlay-hover">
+                                <img src="./img/cover.jpg">
+                                <figcaption class="uk-overlay-panel uk-overlay-top uk-overlay-slide-top uk-text-center">技术资源</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                </ul>
+                <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous" style="color: rgba(0,0,0,0.4)"></a>
+                <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next" style="color: rgba(0,0,0,0.4)"></a>
+                <ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-flex-center">
+                    <li v-for="(item, index) in items" :data-uk-slideshow-item="index">
+                        <a href="javascript:void(0)">{{index}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="uk-hidden-large uk-margin-bottom"></div>
+    </div>
+
+    <!-- 图片 -->
+    <div class="uk-width-large-1-3">
+        <div class="uk-panel uk-panel-box border-radius-none background-white">
+            <ul class="uk-thumbnav uk-grid-width-1-1">
+                <li class="uk-active" style="margin-bottom:11.2px">
+                    <a href="javascript:;">
+                        <figure class="uk-overlay uk-overlay-active">
+                            <img src="./img/cover.jpg">
+                            <figcaption class="uk-overlay-panel uk-overlay-bottom uk-text-center">入站须知</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="uk-active">
+                    <a href="javascript:;">
+                        <figure class="uk-overlay uk-overlay-active">
+                            <img src="./img/cover.jpg">
+                            <figcaption class="uk-overlay-panel uk-overlay-bottom uk-text-center">留言板</figcaption>
+                        </figure>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<ul class="uk-grid uk-grid-small uk-grid-width-large-1-3 uk-grid-match" data-uk-grid-margin>
+    <!-- 最新资源 -->
+    <li>
+        <div class="uk-panel uk-panel-box uk-panel-header border-radius-none background-white">
+            <div class="uk-panel-badge" style="top:16px">
+                <a class="uk-text-muted" href="javascript:;">更多&gt;&gt;</a>
+            </div>
+            <div class="uk-panel-title"><i class="uk-icon-flash"></i>&nbsp;&nbsp;最新资源</div>
+            <div class="uk-panel-body uk-padding-remove">
+                <ul class="uk-list uk-list-space list">
+                    <li v-for="item in items10">
+                        <div class="uk-grid">
+                            <div class="uk-width-2-3 uk-text-truncate">
+                                <a href="javascript:;">
+                                    <i class="uk-icon-angle-right"></i>&nbsp;技术书籍-react从入门到放弃
+                                </a>
+                            </div>
+                            <div class="uk-width-1-3 uk-text-right">
+                                <span class="uk-text-muted">2017-01-01</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </li>
+    <!-- 最新回复 -->
+    <li>
+        <div class="uk-panel uk-panel-box uk-panel-header border-radius-none background-white">
+            <div class="uk-panel-badge" style="top:16px">
+                <a class="uk-text-muted" href="javascript:;">更多&gt;&gt;</a>
+            </div>
+            <div class="uk-panel-title"><i class="uk-icon-comments-o"></i>&nbsp;&nbsp;最新回复</div>
+            <div class="uk-panel-body uk-padding-remove">
+                <ul class="uk-list uk-list-space list">
+                    <li v-for="item in items10">
+                        <div class="uk-grid">
+                            <div class="uk-width-2-3 uk-text-truncate">
+                                <a href="javascript:;">
+                                    <i class="uk-icon-angle-right"></i>&nbsp;匿名用户：我已经从入门到放弃了
+                                </a>
+                            </div>
+                            <div class="uk-width-1-3 uk-text-right">
+                                <span class="uk-text-muted">2017-01-01</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </li>
+    <!-- 随便看看 -->
+    <li>
+        <div class="uk-panel uk-panel-box uk-panel-header border-radius-none background-white">
+            <div class="uk-panel-badge" style="top:16px">
+                <a class="uk-text-muted" href="javascript:;">更多&gt;&gt;</a>
+            </div>
+            <div class="uk-panel-title"><i class="uk-icon-refresh"></i>&nbsp;&nbsp;随便看看</div>
+            <div class="uk-panel-body uk-padding-remove">
+                <ul class="uk-list uk-list-space list">
+                    <li v-for="item in items10">
+                        <div class="uk-grid">
+                            <div class="uk-width-2-3 uk-text-truncate">
+                                <a href="javascript:;">
+                                    <i class="uk-icon-angle-right"></i>&nbsp;我看看就放弃了
+                                </a>
+                            </div>
+                            <div class="uk-width-1-3 uk-text-right">
+                                <span class="uk-text-muted">2017-01-01</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<!-- 图包面板 -->
+<div class="uk-width-1-1 uk-margin-top">
+    <div class="uk-panel uk-panel-box uk-panel-header border-radius-none background-white">
+        <div class="uk-panel-badge" style="top:16px">
+            <a class="uk-text-muted" href="javascript:;">更多&gt;&gt;</a>
+        </div>
+        <div class="uk-panel-title"><i class="uk-icon-star"></i>&nbsp;&nbsp;图片分享</div>
+        <div class="uk-panel-body uk-padding-remove">
+            <ul class="uk-thumbnav uk-grid-width-large-1-5 uk-grid-width-1-2">
+                <li v-for="item in items10" class="uk-active">
+                    <div class="uk-panel uk-panel-box border-radius-none background-gray2">
+                        <div class="uk-panel-teaser" style="border-top-left-radius: 0; border-top-right-radius: 0;">
+                            <a href="javascript:;">
+                                <img src="./img/cover.jpg">
+                            </a>
+                        </div>
+                        <p class="uk-text-truncate uk-margin-remove" title="text">react从入门到放弃</p>
+                        <span class="uk-text-muted uk-text-small">
+                            <i class="uk-icon-clock-o"></i>&nbsp;2017-01-01
+                        </span>
+                        <span class="uk-text-muted uk-text-small uk-float-right">
+                            <i class="uk-icon-thumbs-o-up"></i>&nbsp;100
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 广告 -->
+<div class="uk-margin uk-hidden-small">
+    <a href="javascript:;">
+        <img src="./img/banner.jpg">
+    </a>
+</div>
+
+<!-- 漫画面板 -->
+<div class="uk-width-1-1 uk-margin-top">
+    <div class="uk-panel uk-panel-box uk-panel-header border-radius-none background-white">
+        <div class="uk-panel-badge" style="top:16px">
+            <a class="uk-text-muted" href="javascript:;">更多&gt;&gt;</a>
+        </div>
+        <div class="uk-panel-title"><i class="uk-icon-${comicType.icon }"></i>&nbsp;&nbsp;漫画分享</div>
+        <div class="uk-panel-body uk-padding-remove">
+            <ul class="uk-thumbnav uk-grid-width-large-1-5 uk-grid-width-1-2">
+                <li v-for="item in items10" class="uk-active">
+                    <div class="uk-panel uk-panel-box border-radius-none background-gray2">
+                        <div class="uk-panel-teaser" style="border-top-left-radius: 0; border-top-right-radius: 0;">
+                            <a href="javascript:;">
+                                <img src="./img/cover.jpg">
+                            </a>
+                        </div>
+                        <p class="uk-text-truncate uk-margin-remove" title="text">react从入门到放弃</p>
+                        <span class="uk-text-muted uk-text-small">
+                        <i class="uk-icon-clock-o"></i>&nbsp;2017-01-01
+                    </span>
+                        <span class="uk-text-muted uk-text-small uk-float-right">
+                        <i class="uk-icon-thumbs-o-up"></i>&nbsp;100
+                    </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 模块 -->
+<ul class="uk-grid uk-grid-small uk-grid-width-large-1-2 uk-margin-top" data-uk-grid-margin>
+    <li v-for="item in items">
+        <div class="uk-panel uk-panel-box uk-panel-header border-radius-none background-white">
+            <div class="uk-panel-badge" style="top:16px">
+                <a class="uk-text-muted" href="javascript:;">更多&gt;&gt;</a>
+            </div>
+            <div class="uk-panel-title">
+                <i class="uk-icon-star"></i>&nbsp;&nbsp;其他分享
+            </div>
+            <div class="uk-panel-body uk-padding-remove">
+                <ul class="uk-list uk-list-space">
+                    <li v-for="(item, index) in items10">
+                        <div v-if="index==0" class="uk-grid uk-grid-small uk-flex-top" data-uk-grid-margin>
+                            <div class="uk-width-large-2-5 uk-width-3-5">
+                                <div class="uk-panel">
+                                    <a href="javascript:;">
+                                        <img src="./img/cover.jpg">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="uk-width-large-3-5 uk-width-2-5">
+                                <h4><a href="javascript:;">react从入门到放弃</a></h4>
+                                <p class="uk-text-muted uk-text-truncate">react从入门到放弃，从听到这名字开始我就放弃了</p>
+                                <span class="uk-text-muted"><i class="uk-icon-clock-o"></i> 2017-01-01</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="uk-text-muted"><i class="uk-icon-thumbs-o-up"></i> 100</span>
+                            </div>
+                        </div>
+
+                        <div v-if="index!=0" class="uk-grid">
+                            <div class="uk-width-3-4 uk-text-truncate">
+                                <i class="uk-icon-angle-right"></i>&nbsp;&nbsp;
+                                <a href="javascript:;">react从入门到放弃</a>
+                            </div>
+                            <div class="uk-width-1-4 uk-text-right">
+                                <span class="uk-text-muted"><i class="uk-icon-clock-o"></i> 2017-01-01</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<script>
+    new Vue({
+        el: '#mainContent',
+        data: {
+            items: ['A', 'B', 'C', 'D'],
+            items8: [1, 2, 3, 4, 5, 6, 7, 8],
+            items10: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            items15: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        }
+    });
+</script>

@@ -1,0 +1,35 @@
+{
+  "name": "library-webapp",
+  "description": "library",
+  "main": "index.html",
+  "authors": [
+    "heng9 <1359137558@qq.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "library"
+  ],
+  "homepage": "http://www.kilakila.cn",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bower-uikit": "https://github.com/uikit/bower-uikit",
+    "uikit": "^2.27.4",
+    "vue": "^2.4.2",
+    "director": "flatiron/director#^1.2.8",
+    "iCheck": "icheck#^1.0.2",
+    "layer": "sentsin/layer#^3.0.3",
+    "kindeditor": "twocabbages/kindeditor",
+    "cropper": "fengyuanchen/cropper#^2.3.4",
+    "Gallery": "blueimp/Gallery#^2.25.2",
+    "JavaScript-Load-Image": "blueimp/JavaScript-Load-Image#^2.13.1",
+    "JavaScript-Canvas-to-Blob": "blueimp/JavaScript-Canvas-to-Blob#^3.9.0",
+    "blueimp-file-upload": "blueimp/jQuery-File-Upload#^9.18.0"
+  }
+}

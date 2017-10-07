@@ -1,0 +1,97 @@
+<div class="uk-panel uk-panel-box uk-panel-header border-radius-none background-white">
+	<div class="uk-panel-title">
+		<i class="uk-icon-comments-o"></i>&nbsp;留言板
+	</div>
+	<div class="uk-panel-body uk-padding-remove">
+		<ul class="uk-comment-list">
+			<li>
+				<article class="uk-comment">
+					<header class="uk-comment-header background-gray2 border-radius-none">
+						<img class="uk-comment-avatar uk-border-circle" width=60 height=60 src="./img/avatar.jpg">
+						<h4 class="uk-comment-title text-size-normal">匿名用户：&nbsp;从入门到放弃</h4>
+						<div class="uk-comment-meta">
+							<i class="uk-icon-clock-o"></i> 2017-01-01&nbsp;&nbsp;
+							<button type="button" class="preReplyBtn uk-button uk-button-link">回复</button>
+							<button type="button" class="closeReplyBtn uk-button uk-button-link" style="display:none">收起</button>
+							<input type="hidden" name="msg.id" value=""/>
+						</div>
+					</header>
+					<div class="uk-comment-body replyArea">
+						<textarea name='replyArea'></textarea>
+						<div class='uk-text-right uk-margin-small-top'>
+							<button type='button' class='uk-button uk-button-success'>回复</button>
+						</div>
+					</div>
+				</article>
+				
+				<ul>
+					<li>
+						<article class="uk-comment">
+							<header class="uk-comment-header background-gray2 border-radius-none">
+								<img class="uk-comment-avatar uk-border-circle" width="60" height="60" src="./img/avatar.jpg">
+								<h4 class="uk-comment-title text-size-normal">匿名用户：&nbsp;从入门到放弃</h4>
+								<div class="uk-comment-meta">
+									<i class="uk-icon-clock-o"></i> 2017-01-01&nbsp;&nbsp;
+								</div>
+							</header>
+						</article>
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+		<!-- 分页 -->
+		<ul class="uk-pagination" data-uk-pagination="{items:1000, itemsOnPage:10, displayedPages:9}"></ul>
+
+		<!-- 回复 -->
+		<h4 class="uk-panel-title"><i class="uk-icon-commenting"></i>&nbsp;&nbsp;发布留言</h4>
+		<form class="uk-form uk-form-row">
+		    <textarea name="content"></textarea>
+		    <div class="uk-margin-top">
+			    <!--<img onclick="javascript:loadImage();" title="换一张试试" class="randImage"
+			    		src="/" width=60 height=50 border="1" align="absmiddle">&nbsp;&nbsp;
+		   		<span>验证码：</span>
+		    	<input id="msgCode" type="text" autocomplete="off" style="width: 60px;" class="uk-form-small"/>&nbsp;-->
+		    	<button type="button" class="uk-button uk-button-success uk-float-right">发表</button>
+    		</div>
+		</form>
+	</div>
+</div>
+
+<link rel="stylesheet" href="./bower_components/kindeditor/themes/default/default.css"/>
+<script charset="utf-8" src="./bower_components/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="./bower_components/kindeditor/lang/zh-CN.js"></script>
+<script>
+    (function(w, $){
+        new Vue({
+            el: '#mainContent',
+            data: {
+                items: ['A', 'B', 'C', 'D'],
+                items8: [1, 2, 3, 4, 5, 6, 7, 8],
+                items10: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                items15: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+            }
+        });
+        var editor;
+        var replyEditor;
+        var Editor = {
+            create: function(name, minHeight){
+                return KindEditor.create("textarea[name='"+name+"']", {
+                    resizeType : 1,
+                    allowPreviewEmoticons : false,
+                    allowImageUpload : false,
+                    width: "100%",
+                    minHeight: minHeight,
+                    items : ['emoticons', 'image', 'link']
+                });
+            },
+            remove: function(name){
+                KindEditor.remove("textarea[name='"+name+"']");
+            }
+        };
+        $(function(){
+            editor = Editor.create("content", "100");
+            replyEditor = Editor.create("replyArea", 60);
+        });
+    })(window, jQuery);
+</script>

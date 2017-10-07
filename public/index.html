@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="favicon.ico">
+    <title>资源分享网站</title>
+
+    <!-- uikit组件 -->
+    <link rel="stylesheet" href="./bower_components/uikit/css/uikit.almost-flat.min.css"/><!--uikit核心css-->
+    <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script><!--jquery-->
+    <script type="text/javascript" src="./bower_components/uikit/js/uikit.min.js"></script><!--uikit核心js-->
+
+    <link rel="stylesheet" href="./bower_components/uikit/css/components/dotnav.css"><!--圆点导航的css-->
+    <link rel="stylesheet" href="./bower_components/uikit/css/components/slidenav.css"><!--滑动导航的css-->
+    <link rel="stylesheet" href="./bower_components/uikit/css/components/slideshow.css"/><!--幻灯片css-->
+    <script type="text/javascript" src="./bower_components/uikit/js/components/slideshow.js"></script><!--幻灯片js-->
+    <script type="text/javascript" src="./bower_components/uikit/js/components/slideshow-fx.js"></script><!--幻灯片效果js-->
+
+    <link rel="stylesheet" href="./bower_components/uikit/css/components/notify.css"><!--通知组件的css-->
+    <script type="text/javascript" src="./bower_components/uikit/js/components/notify.js"></script><!-- 通知组件js -->
+
+    <script type="text/javascript" src="./bower_components/uikit/js/components/pagination.min.js"></script><!-- 分页 -->
+    <script type="text/javascript" src="./bower_components/uikit/js/components/sticky.js"></script> <!-- 黏贴效果 -->
+    <script type="text/javascript" src="./bower_components/uikit/js/components/accordion.js"></script><!--手风琴效果-->
+
+    <script src="./bower_components/vue/dist/vue.min.js"></script><!-- vue -->
+    <script type="text/javascript" src="./bower_components/director/build/director.min.js"></script><!-- director -->
+    <script type="text/javascript" src="./bower_components/layer/build/layer.js"></script><!-- layer -->
+
+    <link rel="stylesheet" href="./css/index.css">
+    <script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- 头部导航 -->
+    <header>
+        <!-- PC端 -->
+        <div class="uk-hidden-small">
+            <nav id="pc-nav" class="uk-navbar uk-navbar-attached" data-uk-sticky>
+                <ul class="uk-navbar-nav">
+                    <li><a href="javascript:;" data-target="sidebar"><i class="uk-icon-bars uk-icon-small"></i></a></li>
+                </ul>
+                <a class="uk-navbar-brand" href="/">
+                    <img src="img/logo.png" width=210/>
+                </a>
+                <div class="uk-navbar-content">
+                    <form class="uk-form uk-margin-remove uk-display-inline-block" id="searchForm" onsubmit="return false">
+                        <input class="uk-form-width-medium" id="q" name="q" type="text"
+                               onkeydown="if(event.keyCode==13);" placeholder="请输入关键字" autocomplete="off">
+                        <button type="button" onclick="" class="uk-button uk-button-primary"><i class="uk-icon-search"></i>&nbsp;搜索</button>
+                    </form>
+                </div>
+                <div class="uk-navbar-flip">
+                    <ul class="uk-navbar-nav">
+                        <div class="uk-navbar-content">
+                            <div class="uk-button-group">
+                                <button type="button" class="uk-button uk-button-primary">
+                                    <i class="uk-icon-bullhorn"></i> 公告
+                                </button>
+                                <button type="button" class="uk-button uk-button-primary">
+                                    <i class="uk-icon-bell"></i> 入站须知
+                                </button>
+                            </div>
+                        </div>
+                        <div class="uk-navbar-content">
+                            <div class="uk-button-group">
+                                <button type="button" class="uk-button uk-button-success">
+                                    <i class="uk-icon-user"></i> 登录
+                                </button>
+                                <button type="button" class="uk-button uk-button-success">
+                                    <i class="uk-icon-user-plus"></i> 注册
+                                </button>
+                            </div>
+                        </div>
+                        <div class="uk-navbar-content">
+                            <button type="button" class="uk-button uk-button-danger">
+                                <i class="uk-icon-user-times"></i> 注销
+                            </button>
+                        </div>
+                        <div class="uk-navbar-content">
+                            <a href="javascript:;">
+                                <img id="avatar" src="./img/avatar.jpg" width="40" height="40" style="border-radius:50%"/>
+                                <span style="text-shadow:none; color:#fff">用户名</span>
+                            </a>
+                        </div>
+                    </ul>
+                </div>
+            </nav><!--pc-nav end-->
+        </div>
+
+        <!-- 移动端 -->
+        <div class="uk-visible-small">
+            <nav id="mobile-nav" class="uk-navbar uk-navbar-attached" data-uk-sticky>
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a href="javascript:;" data-target="sidebar">
+                            <i class="uk-icon-bars uk-icon-small"></i>
+                        </a>
+                    </li>
+                </ul>
+                <div class="uk-navbar-flip">
+                    <ul class="uk-navbar-nav">
+                        <li><a href="#offcanvas" data-uk-offcanvas>
+                            <i class="uk-icon-bars uk-icon-small"></i>
+                        </a></li>
+                    </ul>
+                </div>
+                <a class="uk-navbar-brand uk-navbar-center" href="/" style="text-shadow:none">
+                    <img src="img/logo.png"/>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 抽屉 -->
+    <div id="offcanvas" class="uk-offcanvas">
+        <div class="uk-offcanvas-bar uk-offcanvas-bar-flip">
+            <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav>
+                <li>
+                    <a onclick="load()" href="/">
+                        <i class="uk-icon-home uk-icon-small"></i>&nbsp;首页
+                    </a>
+                </li>
+                <li v-for="item in items" class="uk-parent">
+                    <a href="#"><i class="uk-icon-star"></i>&nbsp;&nbsp;技术类</a>
+                    <ul class="uk-nav-sub">
+                        <li>
+                            <a href="javascript:;">
+                                <i class="uk-icon-star"></i>&nbsp;&nbsp;全部
+                            </a>
+                        </li>
+                        <li v-for="item in items">
+                            <a href="javascript:;">
+                                <i class="uk-icon-star"></i>&nbsp;&nbsp;数据库
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="uk-parent">
+                    <a href="#"><i class="uk-icon-user"></i>&nbsp;&nbsp;会员相关</a>
+                    <ul class="uk-nav-sub">
+                        <li><a href="javascript:;"><i class="uk-icon-bullhorn"></i>&nbsp;&nbsp;公告</a></li>
+                        <li><a href="javascript:;"><i class="uk-icon-comments-o"></i>&nbsp;&nbsp;留言板</a></li>
+                        <li><a href="javascript:;"><i class="uk-icon-bell"></i>&nbsp;&nbsp;入站须知</a></li>
+                        <li><a href="javascript:;"><i class="uk-icon-cloud-upload"></i>&nbsp;&nbsp;投稿</a></li>
+                        <li><a href="javascript:;"><i class="uk-icon-user-times"></i>&nbsp;&nbsp;注销</a></li>
+                        <li><a href="javascript:;"><i class="uk-icon-user"></i>&nbsp;&nbsp;&nbsp;登录</a></li>
+                        <li><a href="javascript:;"><i class="uk-icon-user-plus"></i>&nbsp;&nbsp;注册</a></li>
+                    </ul>
+                </li>
+
+                <li class="uk-text-center">
+                    <div class="uk-navbar-content" style="height: 60px;padding: 0 10px;">
+                        <form class="uk-form uk-margin-remove uk-display-inline-block">
+                            <a href="javascript:;">
+                                <i style="color:#eee;text-shadow: none" class="uk-icon-search uk-icon-small"></i>&nbsp;&nbsp;
+                            </a>
+                            <input id="q2" name="q" type="text" onkeydown="if(event.keyCode===13);" placeholder="Search" autocomplete="off">
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar uk-hidden-small">
+            <div class="uk-panel">
+                <h3 class="uk-panel-title uk-margin-top uk-margin-left">资源分享网</h3>
+                <ul class="uk-nav uk-nav-side uk-nav-parent-icon" data-uk-nav>
+                    <li v-for="item in pages"><a v-bind:href="item.path" v-html="item.title"></a></li>
+                    <li v-for="item in items" class="uk-parent">
+                        <a href="#"><i class="uk-icon-star"></i>&nbsp;&nbsp;技术类</a>
+                        <ul class="uk-nav-sub">
+                            <li>
+                                <a href="javascript:;"><i class="uk-icon-star"></i>&nbsp;&nbsp;全部</a>
+                            </li>
+                            <li v-for="item in items">
+                                <a href="javascript:;"><i class="uk-icon-star"></i>&nbsp;&nbsp;数据库</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="javascript:;"><i class="uk-icon-comments-o"></i>&nbsp;&nbsp;留言板</a></li>
+                    <li><a href="javascript:;"><i class="uk-icon-cloud-upload"></i>&nbsp;&nbsp;投稿</a></li>
+                    <li><a href="javascript:;"><i class="uk-icon-user-times"></i>&nbsp;&nbsp;注销</a></li>
+                    <li><a href="javascript:;"><i class="uk-icon-user"></i>&nbsp;&nbsp;&nbsp;登录</a></li>
+                    <li><a href="javascript:;"><i class="uk-icon-user-plus"></i>&nbsp;&nbsp;注册</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 公告 -->
+        <div class="uk-alert uk-alert-success uk-margin-top-remove border-none ">
+            <i class="uk-icon-bullhorn"></i>&nbsp;&nbsp;公告：&nbsp;你妈叫你回家吃饭了
+            <i class="uk-icon-clock-o uk-margin-left"></i>&nbsp;&nbsp;2017-01-01
+        </div>
+
+        <!-- 主要内容 -->
+        <div id="mainContent" class="mainContent uk-container"></div>
+
+        <!-- 附加信息 -->
+        <div class="uk-alert uk-alert-success uk-margin-bottom-remove uk-text-center border-none">欢迎老司机加入</div>
+    </div>
+
+    <footer id="footer">
+        <div class="uk-container uk-container-center">
+            <div class="uk-grid">
+                <div class="uk-width-large-1-4 uk-hidden-small" style="border-right: 1px dashed gray">
+                    <h4>kilakila</h4>
+                    <ul>
+                        <li><a href="javascript:;">关于我们</a></li>
+                        <li><a href="javascript:;">联系我们</a></li>
+                        <li><a href="javascript:;">加入我们</a></li>
+                        <li><a href="javascript:;">友情链接</a></li>
+                    </ul>
+                </div>
+
+                <div class="uk-width-large-1-4 uk-hidden-small" style="border-right: 1px dashed gray">
+                    <h4>帮助</h4>
+                    <ul>
+                        <li><a href="javascript:;">帮助中心</a></li>
+                        <li><a href="javascript:;">侵权申诉</a></li>
+                        <li><a href="javascript:;">建议/BUG汇报</a></li>
+                    </ul>
+                </div>
+
+                <div class="uk-width-large-2-4">
+                    <h4>友情赞助</h4>
+                    <ul class="uk-grid">
+                        <li class="uk-width-1-2"><img src="./img/support.jpg" class="uk-display-inline-block"></li>
+                        <li class="uk-width-1-2"><img src="./img/support2.jpg" class="uk-display-inline-block"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- go to top -->
+    <a href="#top" id="goTop" data-uk-smooth-scroll><i class="uk-icon-chevron-up"></i></a>
+</div>
+<script>
+    var path = '/resource-web/public';
+
+    $(function(){
+        var routes = {
+            '/main': function(){ $("#mainContent").load(path + './main.html') },
+            '/list': function(){ $("#mainContent").load(path + './list.html') },
+            '/view': function(){ $("#mainContent").load(path + './view.html') },
+            '/upload': function(){ $("#mainContent").load(path + './upload.html') },
+            '/attention': function(){ $("#mainContent").load(path + './attention.html') },
+            '/msg': function(){ $("#mainContent").load(path + './msg.html') },
+            '*': function(){ $("#mainContent").load(path + './main.html') }
+        };
+
+        /*var routes = {
+            '/main': function(){ $("#mainContent").load('./main') },
+            '/list': function(){ $("#mainContent").load('./list') },
+            '/view': function(){ $("#mainContent").load('./view') },
+            '/upload': function(){ $("#mainContent").load('./upload') },
+            '/attention': function(){ $("#mainContent").load('./attention') },
+            '/msg': function(){ $("#mainContent").load('./msg') },
+            '*': function(){ $("#mainContent").load('./main') }
+        };*/
+        var router = Router(routes);
+        router.init();
+
+        var hash = window.location.hash;
+        if(hash===''){
+            $("#mainContent").load('./main.html');
+        }
+    });
+
+    new Vue({
+        el: '#app',
+        data: {
+            pages: [
+                {
+                    title: '首页',
+                    path: path + '/#/main'
+                }, {
+                    title: '列表页',
+                    path: path + '/#/list'
+                }, {
+                    title: '详情页',
+                    path: path + '/#/view'
+                }, {
+                    title: '入站须知',
+                    path: path + '/#/attention'
+                }, {
+                    title: '上传页',
+                    path: path + '/#/upload'
+                }, {
+                    title: '留言页',
+                    path: path + '/#/msg'
+                }
+            ],
+            items: ['A', 'B', 'C', 'D'],
+            items8: [1, 2, 3, 4, 5, 6, 7, 8],
+            items10: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            items15: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        }
+    });
+</script>
+</body>
+</html>

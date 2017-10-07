@@ -1,0 +1,291 @@
+/* 基础样式 */
+body, h1, h2, h3, h4, h5, h6, ul, li, span, a{
+	font-family: "微软雅黑";
+}
+a{
+	text-decoration: none;
+	color: #404040;
+}
+a:hover{
+	text-decoration: none;
+	color: #00a1d6;
+}
+a[class*=active]{
+	color: #00a1d6;
+}
+h3{
+	border-left: 4px solid #dd5862;
+	padding-left: 10px;
+}
+
+.border-none{
+	border: none;
+}
+.border-radius-none{
+	border-radius: 0;
+}
+.background-white{
+	background-color: #fff;
+}
+.background-gray{
+	background-color: #eee;
+}
+.background-gray2{
+	background-color: #f5f5f5;
+}
+.text-size-normal{
+	font-size: 14px
+}
+.text-color-gray{
+	color: #040404;
+}
+.text-color-red{
+	color: red;
+}
+.padding{
+	padding: 15px !important;
+}
+.padding-top-5{
+	padding: 5px !important;
+}
+.padding-left{
+	padding-left: 15px !important;
+}
+.padding-right{
+	padding-right: 15px !important;
+}
+.padding-large-right{
+	padding-right: 30px !important;
+}
+
+
+/* UIkit样式修改 */
+figcaption{
+	background: rgba(0,0,0,0.5); /* 遮罩 */
+}
+.uk-pagination li span{
+	cursor: pointer;
+}
+.uk-pagination li span:hover{
+	background: #00a8e6;
+}
+.uk-container{
+	max-width: 1500px;
+}
+
+/* 自定义常用样式 */
+/* 阴影效果  */
+.uk-shadow:hover{
+	cursor: pointer;
+	box-shadow:8px 8px 8px #aaa;
+}
+
+
+/* sidebar 定制 */
+html, body { 
+	background: #f0f0f0; 
+	-ms-overflow-style: scrollbar; /*ie-scrollbar*/ 
+	overflow-x: hidden; /* Prevent scroll on narrow devices */ 
+}
+.container { 
+	margin-left: 220px; 
+	z-index: 20; 
+	padding-left: 0; 
+	padding-right: 0; 
+}
+.sidebar { 
+	position: fixed; 
+	left: 0; 
+	top: 60px; 
+	width: 220px; 
+	padding: 0; 
+	background-color: #323841;
+	-webkit-overflow-scrolling: touch; 
+	-webkit-overflow-scrolling: -blackberry-touch; 
+	border-right: 1px solid #ccc; 
+	overflow-y: auto; 
+	overflow-x: hidden; 
+	height: 100%; 
+}
+@media (max-width:767px) {
+	.sidebar { 
+		top: 40px;
+	}
+	.uk-container{
+		padding: 0 10px;
+	}
+}
+.mainContent {
+	width: 100%;
+	height: 100%; 
+	margin: 0 auto;
+	min-width: 320px !important; 
+	min-height: 500px !important;
+	overflow: hidden; 
+}
+
+/* uikit导航条定制 */
+/* pc版本 */
+#pc-nav {
+	z-index: 1000;
+	background: #323841;
+	border: none;
+	padding: 10px 0;
+}
+#pc-nav .uk-navbar-nav > li > a {
+	height: 40px;
+	margin: 0;
+	border: none;
+	border-radius: 3px !important;
+	text-shadow: none;
+	background-color: #323841;
+	font-size: 15px;
+	font-family: "微软雅黑";
+	color: #fff;
+}
+
+#pc-nav .uk-navbar-nav > li > a:hover {
+	background-color: #2BA3D4;
+	color: #FFF;
+}
+#pc-nav .uk-navbar-nav > li.uk-active > a {
+	background-color: #2BA3D4;
+	color: #FFF;
+}
+
+/* 移动版本 */
+#mobile-nav {
+	z-index: 1000;
+	background: #2AA5F8;
+	border: none;
+}
+#mobile-nav .uk-navbar-nav > li > a {
+	height: 40px;
+	margin: 0;
+	border: none;
+	border-radius: 3px !important;
+	text-shadow: none;
+	font-size: 15px;
+	font-family: "微软雅黑";
+	color: #000;
+}
+#mobile-nav .uk-navbar-nav > li > a:hover {
+	background-color: #2BA3D4;
+	color: #FFF;
+}
+#mobile-nav .uk-navbar-nav > li.uk-active > a {
+	background-color: #2BA3D4;
+	color: #FFF;
+}
+#mobile-nav .uk-navbar-brand{
+    margin-top: -40px;	/* logo的样式 */
+}
+
+.uk-offcanvas-page{
+	position: relative;
+}
+.uk-nav-offcanvas .uk-parent .uk-nav-sub > li{
+	height: 30px;
+	line-height: 30px;
+	text-indent: 10px;
+}
+.uk-panel-title {
+	color: #fff;	
+}
+.uk-nav-side > li > a {
+    color: #fff;
+    padding: 8px 15px;
+}
+
+.uk-nav-side > li > a:hover,
+.uk-nav-side > li > a:focus{
+	background: #2AA5F8;
+	text-shadow: none;
+    color: #fff;
+}
+
+/* 二级菜单 */
+.uk-nav-side .uk-nav-sub {
+	/* padding-left: 0; */
+}
+.uk-nav-side ul a{
+	color: #fff;
+	text-indent: 10px;
+}
+.uk-nav-side ul a:hover {
+    color: #fff;
+}
+.uk-nav-side ul li:hover {
+	background: #2AA5F8;
+}
+.uk-nav-side ul li{
+	padding:5px 0;
+}
+
+/* 返回顶部样式  */
+#goTop { 
+	position: fixed; 
+	right: 20px; 
+	bottom: 20px; 
+	display: none; 
+	background-color: #aaa; 
+	color: #fff; 
+	padding: 15px; 
+	font-size: 30px;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center; 
+	border-radius: 8px;  
+	-moz-transition: background 0.5s linear; 
+	-webkit-transition: background 0.5s linear; 
+	-o-transition: background 0.5s linear; 
+	transition: background 0.5s linear; 
+	z-index: 99; 
+}
+#goTop:hover { 
+	background: #808080; 
+}
+@media (max-width:768px) {
+	#goTop { 
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		font-size: 20px;
+		padding: 8px; 
+	}
+}
+
+/* #banner{
+	background: url(../img/banner.jpg) center center no-repeat;
+	width: 100%;
+	height: 200px;
+	position: relative;
+	z-index: 999;
+} */
+
+
+/* 底部样式 */
+footer{
+	background: #fff;
+	padding: 20px 0 50px 0;
+}
+footer h4{
+	margin-bottom: 10px;
+}
+footer ul, footer li{
+	margin: 0;
+	padding: 0;
+}
+footer ul li{
+	list-style: none;
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 10px;
+}
+footer ul li a{
+	text-decoration: none;
+}
+footer img{
+	max-height: 200px;
+}

@@ -1,0 +1,366 @@
+<!-- uikit文件按钮样式 -->
+<link rel="stylesheet" href="./bower_components/uikit/css/components/form-file.css"/>
+<link rel="stylesheet" href="./bower_components/uikit/css/components/progress.css"/>
+
+<!-- The Templates plugin is included to render the upload/download listings -->
+<script type="text/javascript" src="./bower_components/blueimp-tmpl/js/tmpl.min.js"></script>
+<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+<script type="text/javascript" src="./bower_components/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+<!-- The Canvas to Blob plugin is included for image resizing functionality -->
+<script type="text/javascript" src="./bower_components/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+<!-- blueimp -->
+<link rel="stylesheet" href="./bower_components/Gallery/css/blueimp-gallery.min.css">
+<script type="text/javascript" src="./bower_components/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<script type="text/javascript" src="./bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script type="text/javascript" src="./bower_components/blueimp-file-upload/js/jquery.iframe-transport.js"></script><!-- ajax上传支持 -->
+<!-- The basic File Upload plugin -->
+<script type="text/javascript" src="./bower_components/blueimp-file-upload/js/jquery.fileupload.js"></script><!-- 基本上传的JS -->
+<!-- The File Upload processing plugin -->
+<script type="text/javascript" src="./bower_components/blueimp-file-upload/js/jquery.fileupload-process.js"></script><!-- 上传进度插件 -->
+<!-- The File Upload image preview & resize plugin -->
+<script type="text/javascript" src="./bower_components/blueimp-file-upload/js/jquery.fileupload-image.js"></script><!-- 图片上传预览插件 -->
+<!--
+<script type="text/javascript" src="/static/plugin/fileupload/js/jquery.fileupload-audio.js"></script>
+<script type="text/javascript" src="/static/plugin/fileupload/js/jquery.fileupload-video.js"></script>
+ -->
+<!-- The File Upload validation plugin -->
+<script type="text/javascript" src="./bower_components/blueimp-file-upload/js/jquery.fileupload-validate.js"></script><!-- 上传验证 -->
+<!-- The File Upload user interface plugin -->
+<script type="text/javascript" src="./bower_components/blueimp-file-upload/js/jquery.fileupload-ui.js"></script>
+
+<!-- 头像上传插件 -->
+<link rel="stylesheet" href="./bower_components/cropper/dist/cropper.min.css">
+<link rel="stylesheet" href="./css/cropper.css">
+<script type="text/javascript" src="./bower_components/cropper/dist/cropper.min.js"></script>
+<script type="text/javascript" src="./js/cropper.js"></script>
+
+<style>
+    /* 官方demo采用的是bootstrap的样式，隐藏的样式从中抽取出来 */
+    .fade {
+        opacity: 0;
+        -webkit-transition: opacity .15s linear;
+        -o-transition: opacity .15s linear;
+        transition: opacity .15s linear;
+    }
+    .fade.in {
+        opacity: 1;
+    }
+</style>
+
+<div class="uk-grid uk-grid-small">
+    <div class="uk-width-large-4-5">
+        <div class="uk-panel uk-panel-box uk-panel-header border-radius-none background-white">
+            <div class="uk-panel-title"><i class="uk-icon-cloud-upload"></i>&nbsp;&nbsp;投稿</div>
+            <div class="uk-panel-body">
+                <!-- 基本信息表单 -->
+                <form id="mainForm" class="uk-form uk-text-center" method="post" action="" onsubmit="return false">
+                    <div class="uk-form-row">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-1-4 uk-text-right padding-top-5">
+                                <label for="title"><span class="text-color-red">*&nbsp;</span>标题：</label>
+                            </div>
+                            <div class="uk-width-3-4 uk-text-left">
+                                <input type="text" name="title" id="title" class="uk-form-width-large" autocomplete="off" placeholder="请输入50字以内的标题">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-form-row">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-1-4 uk-text-right padding-top-5">
+                                <label for="info"><span class="text-color-red">*&nbsp;</span>简介：</label>
+                            </div>
+                            <div class="uk-width-3-4 uk-text-left">
+                                <textarea type="text" name="info" id="info" class="uk-form-width-large" autocomplete="off" rows="5" placeholder="请输入200字以内的简介"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-form-row">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-1-4 uk-text-right padding-top-5">
+                                <label for="origin"><span class="text-color-red">*&nbsp;</span>类别：</label>
+                            </div>
+                            <div class="uk-width-3-4 uk-text-left">
+                                <select id="select1" name="type.id" required="required">
+                                    <option value="0">请选择分类</option>
+                                    <option value="1">技术类</option>
+                                </select>
+                                <select id="select2" class="uk-hidden" name="subType.id"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-form-row">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-1-4 uk-text-right padding-top-5">
+                                <label for="origin">&nbsp;&nbsp;来源：</label>
+                            </div>
+                            <div class="uk-width-3-4 uk-text-left">
+                                <input type="text" name="origin" id="origin" class="uk-form-width-large" autocomplete="off" placeholder="请输入50字以内的文件来源">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-form-row">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-1-4 uk-text-right padding-top-5">
+                                <label for="baidu"><span class="text-color-red">*&nbsp;</span>度盘：</label>
+                            </div>
+                            <div class="uk-width-3-4 uk-text-left">
+                                <input type="text" name="baidu" id="baidu" class="uk-form-width-large" autocomplete="off" placeholder="请输入百度网盘链接">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-form-row">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-1-4 uk-text-right padding-top-5">
+                                <label for="baidu">提取码：</label>
+                            </div>
+                            <div class="uk-width-3-4 uk-text-left">
+                                <input type="text" name="pwd" id="pwd" class="uk-form-width-large" autocomplete="off" placeholder="请输入百度网盘提取码，默认：无">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-form-row">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-1-4 uk-text-right padding-top-5">
+                                <label for="thunder">磁链：</label>
+                            </div>
+                            <div class="uk-width-3-4 uk-text-left">
+                                <input type="text" name="thunder" id="thunder" class="uk-form-width-large" autocomplete="off" placeholder="请输入磁力链接">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-form-row">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-1-4 uk-text-right padding-top-5">
+                                <label for="baidu">解压码：</label>
+                            </div>
+                            <div class="uk-width-3-4 uk-text-left">
+                                <input type="text" name="compress" id="compress" class="uk-form-width-large" autocomplete="off" placeholder="请输入解压码，默认：无">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 封面 -->
+                    <div class="uk-form-row">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-1-4 uk-text-right padding-top-5">
+                                <label for="thunder"><span class="text-color-red">*&nbsp;</span>封面：</label>
+                            </div>
+                            <div class="uk-width-3-4 uk-text-left">
+                                <button type="button" class="uk-button uk-button-primary" data-uk-modal="{target:'#crop-avatar'}">请选择封面</button>
+                                <div id="coverArea" class="uk-margin-top"></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- 多文件上传表单 -->
+                <form id="fileupload" class="uk-form uk-text-center" method="post" enctype="multipart/form-data" action="">
+                    <!-- 预览图 -->
+                    <div class="uk-form-row">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-1-4 uk-text-right padding-top-5">
+                                <label for="thunder">预览图：</label>
+                            </div>
+                            <div class="uk-width-3-4 uk-text-left">
+                                <div class="uk-form-file">
+                                    <button type="button" class="uk-button uk-button-primary">请选择图片</button>
+                                    <input type="file" name="images" multiple>
+                                </div>
+                                <div class="uk-button-group fileupload-buttonbar">
+                                    <button type="submit" class="uk-button uk-button-success start">上传</button>
+                                    <button type="reset" class="uk-button uk-button-danger cancel">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 文件列表显示 -->
+                    <table class="uk-table uk-table-striped">
+                        <tbody class="files"></tbody>
+                    </table>
+
+                    <!-- 全局进度条显示 -->
+                    <span class="fileupload-process"></span>
+                    <div class="fileupload-progress fade">
+                        <div class="progress uk-progress uk-progress-success uk-progress-striped uk-active">
+                            <div class="uk-progress-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="uk-text-center">
+                    <button type="button" id="submitBtn" class="uk-button uk-button-success">提交</button>
+                    <button type="button" id="resetBtn" class="uk-button uk-margin-left">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-width-large-1-5">
+
+    </div>
+</div>
+
+<!-- 头像上传模块框 -->
+<div id="crop-avatar" class="uk-modal">
+    <div id="avatar-modal" class="uk-modal-dialog uk-modal-dialog-large" aria-labelledby="avatar-modal-label">
+        <button type="button" class="uk-modal-close uk-close"></button>
+        <div class="uk-modal-header">
+            <h2>请选择封面</h2>
+        </div>
+        <form id="avatarForm" class="avatar-form" action="" enctype="multipart/form-data" method="post">
+            <div class="avatar-body">
+                <!-- Upload image and data -->
+                <div class="avatar-upload">
+                    <input type="hidden" class="avatar-src" name="avatar_src">
+                    <input type="hidden" class="avatar-data" name="avatar_data">
+                    <input type="file" class="avatar-input uk-hidden" id="avatarInput" name="avatar_file">
+                    <button class="uk-button uk-button-primary" type="button" style="height: 35px;"
+                            onclick="$('input[id=avatarInput]').click();">请选择图片</button>
+                </div>
+                <!-- Crop and preview -->
+                <div class="uk-grid">
+                    <div class="uk-width-large-3-4">
+                        <div class="avatar-wrapper"></div>
+                    </div>
+                    <div class="uk-width-large-1-4">
+                        <div class="avatar-preview preview-lg"></div>
+                        <div class="avatar-preview preview-md"></div>
+                        <div class="avatar-preview preview-sm"></div>
+                    </div>
+                </div>
+                <!-- Operate buttons -->
+                <div class="uk-margin-top avatar-btns">
+                    <div class="uk-button-group uk-margin-bottom">
+                        <button type="button" class="uk-button uk-button-primary" data-method="rotate" data-option="-90" title="Rotate -90 degrees">向左旋转</button>
+                        <button type="button" class="uk-button uk-button-primary" data-method="rotate" data-option="90" title="Rotate 90 degrees">向右旋转</button>
+                    </div>
+                    <div class="uk-button-group uk-margin-bottom">
+                        <button type="button" class="uk-button uk-button-primary" data-method="setDragMode" data-option="move" type="button" title="移动">
+                            移动<span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;setDragMode&quot;, &quot;move&quot;)"></span>
+                        </button>
+                        <button type="button" class="uk-button uk-button-primary" data-method="zoom" data-option="0.1" title="放大图片">
+                            放大<span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;zoom&quot;, 0.1)">
+								<span class="fa fa-search-plus"></span>
+							</span>
+                        </button>
+                        <button type="button" class="uk-button uk-button-primary" data-method="zoom" data-option="-0.1" title="缩小图片">
+                            缩小<span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;zoom&quot;, -0.1)">
+								<span class="fa fa-search-minus"></span>
+							</span>
+                        </button>
+                        <button type="button" class="uk-button uk-button-primary" data-method="reset" title="重置图片">
+                            重置<span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;reset&quot;)" aria-describedby="tooltip866214"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="uk-button uk-button-primary avatar-save uk-hidden">保存</button>
+        </form>
+        <div class="uk-modal-footer uk-text-right">
+            <button type="button" class="uk-button uk-button-success" onclick="$('.avatar-save').click();">保存</button>
+            <button type="button" class="uk-button uk-button-danger uk-modal-close">关闭</button>
+        </div>
+    </div>
+</div>
+
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload fade">
+        <td>
+            <span class="preview"></span>
+        </td>
+        <td>
+            <p class="name">{%=file.name%}</p>
+            <strong class="error text-danger"></strong>
+        </td>
+        <td>
+            <p class="size">Processing.../上传中...</p>
+            <div class="progress uk-progress uk-progress-striped uk-active">
+				<div class="uk-progress-bar" style="width:0%;"></div>
+			</div>
+        </td>
+        <td>
+            {% if (!i && !o.options.autoUpload) { %}
+                <button class="uk-button uk-button-primary uk-hidden start" disabled>
+                    <i class="uk-icon-cloud-upload"></i> 开始
+                </button>
+            {% } %}
+            {% if (!i) { %}
+                <button class="uk-button uk-button-danger cancel subCancelBtn">
+                    <i class="uk-icon-ban"></i> 取消
+                </button>
+            {% } %}
+        </td>
+    </tr>
+{% } %}
+</script>
+
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade">
+        <td>
+            <span class="preview">
+                {% if (file.thumbnailUrl) { %}
+                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery>
+						<img src="{%=file.thumbnailUrl%}">
+					</a>
+                {% } %}
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                {% if (file.url) { %}
+                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+                {% } else { %}
+                    <span>{%=file.name%}</span>
+                {% } %}
+            </p>
+            {% if (file.error) { %}
+                <div><span class="label label-danger">Error</span> {%=file.error%}</div>
+            {% } %}
+        </td>
+        <td>
+            <span class="size">{%=o.formatFileSize(file.size)%}</span>
+        </td>
+        <td>
+            {% if (file.deleteUrl) { %}
+                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                    <i class="uk-icon-trash"></i> 删除
+                </button>
+                <input type="checkbox" name="delete" value="1" class="toggle">
+            {% } else { %}
+                <button class="uk-button uk-button-danger cancel">
+                    <i class="uk-icon-ban"></i> 取消
+                </button>
+            {% } %}
+        </td>
+    </tr>
+{% } %}
+</script>
+
+<script>
+    $(function(){
+        $('#fileupload').fileupload({
+            url: '',
+            type: 'post',
+            limitMultiFileUploadSize: 100000,
+            autoUpload: true,
+            sequentialUploads: false,
+            //singleFileUploads: false,
+            limitConcurrentUploads: 10,
+            submit: function(e, data){
+                return true;
+            },done: function(e, data){
+                //$(".subCancelBtn").attr("disabled", "disabled");
+            },always:function (e, data) {
+
+            }
+        });
+    })
+</script>

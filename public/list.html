@@ -1,0 +1,98 @@
+<div class="uk-grid uk-grid-small">
+    <div class="uk-width-large-4-5">
+        <div class="uk-panel uk-panel-header uk-panel-box border-radius-none">
+            <div class="uk-panel-title">
+                <h4 class="uk-h3" style="color: #FFA54F">
+                    <i class='uk-icon-list-ul'></i>&nbsp;&nbsp;技术类
+                </h4>
+                <p id="orderLink" class="uk-h5 uk-margin-remove">
+                    <a class="active" href="javascript:;">
+                        <i class="uk-icon-clock-o"></i> 按时间排序
+                    </a>
+                    <a class="uk-margin-left" href="javascript:;">
+                        <i class="uk-icon-thumbs-o-up"></i> 按热度排序
+                    </a>
+                </p>
+            </div>
+
+            <div v-for="item in items10" class="uk-panel-body uk-padding-remove">
+                <div class="uk-panel uk-panel-box uk-padding-remove border-radius-none uk-margin-bottom">
+                    <div class="uk-alert uk-alert-primary uk-margin-remove border-none">
+                        <h3><a href="javascript:;">react从入门到放弃</a></h3>
+                    </div>
+                    <div class="uk-panel-body">
+                        <div class="uk-grid uk-flex-top" data-uk-grid-margin>
+                            <div class="uk-width-large-1-3">
+                                <div class="uk-panel">
+                                    <a href="javascript:;">
+                                        <img src="./img/cover.jpg">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="uk-width-large-2-3 uk-flex-middle uk-grid-margin uk-row-first">
+                                <h4 class="uk-text-truncate">
+                                    <a href="javascript:;">react从入门到放弃</a>
+                                </h4>
+                                <p class="uk-text-muted">react从入门到放弃，从听到这名字开始我就放弃了</p>
+                                <p class="uk-text-muted">
+                                    <i class="uk-icon-clock-o"></i> 2017-01-01
+                                    <i class="uk-icon-thumbs-o-up uk-margin-left"></i> 100
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 分页 -->
+            <ul class="uk-pagination" data-uk-pagination="{items:1000, itemsOnPage:10, displayedPages:9}"></ul>
+        </div>
+    </div>
+
+    <!-- 图片轮播 -->
+    <!--<div class="uk-width-large-1-5">
+        <div class="uk-slidenav-position uk-visible-large" data-uk-slideshow="{animation: 'swipe', autoplay: true}">
+            <ul class="uk-slideshow uk-animation-slide-right">
+                <li v-for="item in items">
+                    <figure class="uk-overlay uk-overlay-hover">
+                        <img :src="'img/advertise/' + item + '.jpg'">
+                        <a target="_blank" href="javascript:;">
+                            <figcaption class="uk-overlay-panel uk-overlay-top uk-overlay-slide-top uk-text-center">${advertise.info }</figcaption>
+                        </a>
+                    </figure>
+                </li>
+            </ul>
+            <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous" style="color: rgba(0,0,0,0.4)"></a>
+            <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next" style="color: rgba(0,0,0,0.4)"></a>
+        </div>
+
+        <div class="uk-margin-top">
+            <div class="uk-slidenav-position uk-visible-large" data-uk-slideshow="{animation: 'swipe', autoplay: true}">
+                <ul class="uk-slideshow uk-animation-slide-right">
+                    <li v-for="item in items">
+                        <figure class="uk-overlay uk-overlay-hover">
+                            <img :src="'img/advertise/' + item + '.jpg'">
+                            <a target="_blank" href="javascript:;">
+                                <figcaption class="uk-overlay-panel uk-overlay-top uk-overlay-slide-top uk-text-center">${advertise.info }</figcaption>
+                            </a>
+                        </figure>
+                    </li>
+                </ul>
+                <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous" style="color: rgba(0,0,0,0.4)"></a>
+                <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next" style="color: rgba(0,0,0,0.4)"></a>
+            </div>
+        </div>
+    </div>-->
+</div>
+
+<script>
+    new Vue({
+        el: '#mainContent',
+        data: {
+            items: ['A', 'B', 'C', 'D'],
+            items8: [1, 2, 3, 4, 5, 6, 7, 8],
+            items10: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            items15: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        }
+    });
+</script>
