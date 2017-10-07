@@ -247,23 +247,23 @@
 
     $(function(){
         var routes = {
-            '/main': function(){ $("#mainContent").load(path + './main.html') },
-            '/list': function(){ $("#mainContent").load(path + './list.html') },
-            '/view': function(){ $("#mainContent").load(path + './view.html') },
-            '/upload': function(){ $("#mainContent").load(path + './upload.html') },
-            '/attention': function(){ $("#mainContent").load(path + './attention.html') },
-            '/msg': function(){ $("#mainContent").load(path + './msg.html') },
-            '*': function(){ $("#mainContent").load(path + './main.html') }
+            '/main': function(){ $("#mainContent").load(path + '/main.html') },
+            '/list': function(){ $("#mainContent").load(path + '/list.html') },
+            '/view': function(){ $("#mainContent").load(path + '/view.html') },
+            '/upload': function(){ $("#mainContent").load(path + '/upload.html') },
+            '/attention': function(){ $("#mainContent").load(path + '/attention.html') },
+            '/msg': function(){ $("#mainContent").load(path + '/msg.html') },
+            '*': function(){ $("#mainContent").load(path + '/main.html') }
         };
 
         /*var routes = {
-            '/main': function(){ $("#mainContent").load('./main') },
-            '/list': function(){ $("#mainContent").load('./list') },
-            '/view': function(){ $("#mainContent").load('./view') },
-            '/upload': function(){ $("#mainContent").load('./upload') },
-            '/attention': function(){ $("#mainContent").load('./attention') },
-            '/msg': function(){ $("#mainContent").load('./msg') },
-            '*': function(){ $("#mainContent").load('./main') }
+            '/main': function(){ $("#mainContent").load('/main') },
+            '/list': function(){ $("#mainContent").load('/list') },
+            '/view': function(){ $("#mainContent").load('/view') },
+            '/upload': function(){ $("#mainContent").load('/upload') },
+            '/attention': function(){ $("#mainContent").load('/attention') },
+            '/msg': function(){ $("#mainContent").load('/msg') },
+            '*': function(){ $("#mainContent").load('/main') }
         };*/
         var router = Router(routes);
         router.init();
